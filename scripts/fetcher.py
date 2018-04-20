@@ -62,17 +62,19 @@ def dict_gen(row, currency, currency_codes, date):
     return d
 
 
-new_line, new_codes = rates[:], cur[:]
+if not db_prices.find({"date": date}).count():
 
-#  for EUR
-eur_new_line, eur_new_codes = rates[:], cur[:]
+    new_line, new_codes = rates[:], cur[:]
 
-eur_ = dict_gen(eur_new_line, currency="EUR", currency_codes=eur_new_codes, date=date)
-print (json.dumps(eur_))
-db_prices.insert_one(eur_)
-#  end EUR block
+    #  for EUR
+    eur_new_line, eur_new_codes = rates[:], cur[:]
 
-for code in new_codes:
-    temp_row = new_line[:]
-    record = dict_gen(temp_row, currency=code, currency_codes=new_codes, date=date)
-    db_prices.insert_one(record)
+    eur_ = dict_gen(eur_new_line, currency="EUR", currency_codes=eur_new_codes, date=date)
+    print (json.dumps(eur_))
+    db_prices.insert_one(eur_)
+    #  end EUR block
+
+    for code in new_codes:
+        temp_row = new_line[:]
+        record = dict_gen(temp_row, currency=code, currency_codes=new_codes, date=date)
+        db_prices.insert_one(record)
