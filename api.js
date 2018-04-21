@@ -14,12 +14,6 @@ http.createServer(function (req, res) {
         res.write(fileContents);
         res.end();
     }
-    else if (req.url === '/home.js') {
-        res.writeHead(200, {'Content-type' : 'text/javascript'});
-        var fileContents = fs.readFileSync('./home.js', {encoding: 'utf8'});
-        res.write(fileContents);
-        res.end();
-    }
     else if (req.url === '/'){
         fs.readFile('./home.html', null, function(err, data){
             if(err){
@@ -53,11 +47,12 @@ http.createServer(function (req, res) {
         var cursor = collection.find(query, {fields: fields}).sort({"date": -1}).limit(1).toArray(function(err, result) {
             if (err) throw err;
             dbo.close();
-            res.writeHead(200, {'Content-Type': 'text/json'});
             if(result[0]){
+                res.writeHead(200, {'Content-Type': 'text/json'});
                 res.write(JSON.stringify(result[0]));
             }else{
-                res.write(JSON.stringify({}))
+                res.writeHead(400, {'Content-Type': 'text/json'});
+                res.write(JSON.stringify({"error":"Invalid base or symbols"}))
             }
             res.end();
             });
@@ -83,11 +78,12 @@ http.createServer(function (req, res) {
           var cursor = collection.find(query, {fields: fields}).toArray(function(err, result) {
             if (err) throw err;
             dbo.close();
-            res.writeHead(200, {'Content-Type': 'text/json'});
             if(result[0]){
+                res.writeHead(200, {'Content-Type': 'text/json'});
                 res.write(JSON.stringify(result[0]));
             }else{
-                res.write(JSON.stringify({}))
+                res.writeHead(400, {'Content-Type': 'text/json'});
+                res.write(JSON.stringify({"error":"Invalid base or symbols"}))
             }
             res.end();
           });
