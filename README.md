@@ -1,6 +1,6 @@
 # foreign exchangre rates api
 
-ratesapi is a free API for present and historical foreign exchange rates from [European Central Bank](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html).
+ratesapi is a free API for present and historical foreign exchange rates. We developed this service by reading public data from [European Central Bank](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html).
 
 **Note**: The reference rates are usually updated around 16:00 CET on every working day.
 
