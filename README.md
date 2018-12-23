@@ -1,4 +1,4 @@
-# ratesapi
+# foreign exchangre rates api
 
 ratesapi is a free API for present and historical foreign exchange rates from [European Central Bank](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html).
 
@@ -34,5 +34,7 @@ https://ratesapi.io/api/latest?base=USD&symbols=INR,GBP
 
 {"base":"USD","date":"2018-04-20","rates":{"GBP":0.7117,"INR":66.1223}}
 ```
+
+# Support and feature requests:
 
 We welcome your feedback and support, raise [github ticket](https://github.com/MicroPyramid/ratesapi/issues) if you want to report a bug. Need new features? Contact us [here](https://micropyramid.com/contact-usa/)
