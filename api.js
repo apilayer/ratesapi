@@ -81,10 +81,10 @@ http.createServer(function (req, res) {
             }
             dbo.close();
             if(result[0]){
-                res.writeHead(200, {'Content-Type': 'text/json'});
+                res.writeHead(200, {'Content-Type': 'application/json'});
                 res.write(JSON.stringify(result[0]));
             }else{
-                res.writeHead(400, {'Content-Type': 'text/json'});
+                res.writeHead(400, {'Content-Type': 'application/json'});
                 res.write(JSON.stringify({"error":"Invalid base or symbols"}))
             }
             res.end();
